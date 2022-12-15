@@ -87,3 +87,27 @@ void _div(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 	(*stack)->n /= top;
 }
+
+/**
+ * _mul - multiplies the second top element of the stack with the top element
+ * of the stack.
+ * @stack: double pointer to the top of the stack
+ * @line_number: line in the file we are
+ *
+ * Description: The result is stored in the second top element of the stack,
+ * and the top element is removed
+ */
+void _mul(stack_t **stack, unsigned int line_number)
+{
+	int top;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+		free_all(*stack);
+		exit(EXIT_FAILURE);
+	}
+	top = (*stack)->n;
+	pop(stack, line_number);
+	(*stack)->n *= top;
+}
