@@ -60,7 +60,6 @@ void free_stack(stack_t *head)
 
 /**
  * free_args - frees a arg_t structure
- * @head: pointer to the structure
  */
 void free_args(void)
 {

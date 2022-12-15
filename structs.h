@@ -50,6 +50,8 @@ typedef struct command_s
 /**
  * struct arguments - holds everything that should be passed down to other
  * functions
+ * @op_arg: holds the argument for a particular opcode
+ * @command: command_t linked list holding all the commands from a file
  */
 typedef struct arguments
 {
