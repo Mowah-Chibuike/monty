@@ -60,6 +60,7 @@ fptr get_func(char *op_code)
 	instruction_t array[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 
