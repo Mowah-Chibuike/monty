@@ -47,13 +47,6 @@ void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
-	if (args->op_arg != NULL)
-	{
-		fprintf(stderr, "L%d: Usage: pop\n", line_number);
-		free_stack(*stack);
-		free_args();
-		exit(EXIT_FAILURE);
-	}
 	while (temp != NULL)
 	{
 		printf("%d\n", temp->n);
@@ -90,13 +83,6 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		free_stack(*stack);
-		free_args();
-		exit(EXIT_FAILURE);
-	}
-	if (args->op_arg != NULL)
-	{
-		fprintf(stderr, "L%d: Usage: pint\n", line_number);
 		free_stack(*stack);
 		free_args();
 		exit(EXIT_FAILURE);
