@@ -27,10 +27,7 @@ command_t *read_file(char *filename)
 			errno = 0;
 			command = parse_line(line);
 			if (command == NULL && errno != 0)
-			{
-				printf("Problem\n");
 				return (NULL);
-			}
 			if (command != NULL)
 			{
 				node = add_coms_node(&head, command[0], command[1], line_num);
@@ -62,6 +59,7 @@ fptr get_func(char *op_code)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
 		{NULL, NULL}
 	};
 
@@ -100,6 +98,7 @@ int main(int argc, char *argv[])
 	if (args == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_coms_list(head);
 		exit(EXIT_FAILURE);
 	}
 	args->command = head;
@@ -110,14 +109,13 @@ int main(int argc, char *argv[])
 		if (func == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, temp->opcode);
-			free_args();
+			free_all(stack);
 			exit(EXIT_FAILURE);
 		}
 		args->op_arg = temp->arg;
 		func(&stack, line_num);
 		temp = temp->next;
 	}
-	free_args();
-	free_stack(stack);
+	free_all(stack);
 	return (0);
 }

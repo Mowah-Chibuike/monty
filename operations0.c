@@ -12,16 +12,14 @@ void push(stack_t **stack, unsigned int line_number)
 	if (check_string(args->op_arg) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free_stack(*stack);
-		free_args();
+		free_all(*stack);
 		exit(EXIT_FAILURE);
 	}
 	new_node = (stack_t *)malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free_stack(*stack);
-		free_args();
+		free_all(*stack);
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = atoi(args->op_arg);
@@ -65,8 +63,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		free_stack(*stack);
-		free_args();
+		free_all(*stack);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
@@ -84,8 +81,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		free_stack(*stack);
-		free_args();
+		free_all(*stack);
 		exit(EXIT_FAILURE);
 	}
 	temp = (*stack)->next;
@@ -93,4 +89,24 @@ void pop(stack_t **stack, unsigned int line_number)
 		temp->prev = NULL;
 	free(*stack);
 	*stack = temp;
+}
+
+/**
+ * swap - swaps the top two elements of the stack.
+ * @stack: double pointer to the head node of a stack_t doubly linked list
+ * @line_number: line number of the operation
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	int temp;
+
+	if ((*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short", line_number);
+		free_all(*stack);
+		exit(EXIT_FAILURE);
+	}
+	temp = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = temp;
 }

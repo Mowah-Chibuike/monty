@@ -66,3 +66,13 @@ void free_args(void)
 	free_coms_list(args->command);
 	free(args);
 }
+
+/**
+ * free_all - frees all dynamically allocated memory
+ * @stack: pointer to head node of the stack
+ */
+void free_all(stack_t *stack)
+{
+	free_stack(stack);
+	free_args();
+}
