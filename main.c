@@ -55,14 +55,9 @@ fptr get_func(char *op_code)
 {
 	int i;
 	instruction_t array[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
+		{"push", push}, {"pall", pall}, {"pint", pint},
+		{"pop", pop}, {"swap", swap}, {"add", add},
+		{"nop", nop}, {"sub", sub}, {"div", _div},
 		{NULL, NULL}
 	};
 
