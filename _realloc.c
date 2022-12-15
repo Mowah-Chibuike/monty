@@ -15,10 +15,7 @@ char *_realloc(char *old, int size, char new)
 
 	new_string = (char *)malloc(sizeof(char) * (size + 1));
 	if (new_string == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
 		return (NULL);
-	}
 	for (i = 0; i < (size - 1); i++)
 		new_string[i] = old[i];
 	new_string[i] = new;
@@ -43,10 +40,7 @@ char **_realoc(char **old, int size, char *str)
 	new_list = (char **)malloc(sizeof(char *) * size);
 	new_string = _strdup(str);
 	if (new_list == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
 		return (NULL);
-	}
 	for (i = 0; i < (size - 1); i++)
 		new_list[i] = old[i];
 	new_list[i] = new_string;
