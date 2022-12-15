@@ -47,7 +47,13 @@ void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
-	(void)line_number;
+	if (args->op_arg != NULL)
+	{
+		fprintf(stderr, "L%d: Usage: pop\n", line_number);
+		free_stack(*stack);
+		free_args();
+		exit(EXIT_FAILURE);
+	}
 	while (temp != NULL)
 	{
 		printf("%d\n", temp->n);
@@ -69,5 +75,42 @@ void pint(stack_t **stack, unsigned int line_number)
 		free_args();
 		exit(EXIT_FAILURE);
 	}
+	if (args->op_arg != NULL)
+	{
+		fprintf(stderr, "L%d: Usage: pint\n", line_number);
+		free_stack(*stack);
+		free_args();
+		exit(EXIT_FAILURE);
+	}
 	printf("%d\n", (*stack)->n);
+}
+
+/**
+ * pop - removes the top element of the stack.
+ * @stack: double pointer to the head node of a stack_t doubly linked list
+ * @line_number: line number of the operation
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_stack(*stack);
+		free_args();
+		exit(EXIT_FAILURE);
+	}
+	if (args->op_arg != NULL)
+	{
+		fprintf(stderr, "L%d: Usage: pint\n", line_number);
+		free_stack(*stack);
+		free_args();
+		exit(EXIT_FAILURE);
+	}
+	temp = (*stack)->next;
+	if (temp != NULL)
+		temp->prev = NULL;
+	free(*stack);
+	*stack = temp;
 }
