@@ -59,7 +59,7 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div - divides the second top element of the stack by the top element of the
+ * _div - divides the second top element of the stack by the top element of the
  * stack
  * @stack: double pointer to the top of the stack
  * @line_number: line in the file we are
@@ -73,7 +73,7 @@ void _div(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 		free_all(*stack);
 		exit(EXIT_FAILURE);
 	}
