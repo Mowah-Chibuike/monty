@@ -4,6 +4,9 @@
  * add - adds the top two elements of the stack.
  * @stack: double pointer to the top of the stack
  * @line_number: line in the file we are
+ *
+ * Description: The result is stored in the second top element of the stack,
+ * and the top element is removed
  */
 void add(stack_t **stack, unsigned int line_number)
 {
@@ -32,9 +35,13 @@ void nop(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * add - adds the top two elements of the stack.
+ * sub - subtracts the top element of the stack from the second top element
+ * of the stack.
  * @stack: double pointer to the top of the stack
  * @line_number: line in the file we are
+ *
+ * Description: The result is stored in the second top element of the stack,
+ * and the top element is removed
  */
 void sub(stack_t **stack, unsigned int line_number)
 {
