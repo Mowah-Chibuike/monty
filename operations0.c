@@ -75,13 +75,6 @@ void pint(stack_t **stack, unsigned int line_number)
 		free_args();
 		exit(EXIT_FAILURE);
 	}
-	if (args->op_arg != NULL)
-	{
-		fprintf(stderr, "L%d: Usage: pint\n", line_number);
-		free_stack(*stack);
-		free_args();
-		exit(EXIT_FAILURE);
-	}
 	printf("%d\n", (*stack)->n);
 }
 
