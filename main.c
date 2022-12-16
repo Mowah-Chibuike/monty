@@ -30,9 +30,12 @@ command_t *read_file(char *filename)
 				return (NULL);
 			if (command != NULL)
 			{
-				node = add_coms_node(&head, command[0], command[1], line_num);
-				if (node == NULL)
-					return (NULL);
+				if (command[0][0] != '#')
+				{
+					node = add_coms_node(&head, command[0], command[1], line_num);
+					if (node == NULL)
+						return (NULL);
+				}
 				free_strings_array(command);
 			}
 			free(line);
