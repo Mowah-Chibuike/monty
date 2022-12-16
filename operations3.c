@@ -49,3 +49,28 @@ void rotr(stack_t **stack, unsigned int line_number)
 		args->tail->next = NULL;
 	}
 }
+
+/**
+ * _stack - sets the format of the data to a stack (LIFO). This is the default
+ * behavior of the program.
+ * @stack: double pointer to the top of the stack
+ * @line_number: line in the file we are
+ */
+void _stack(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+	args->mode = 0;
+}
+
+/**
+ * queue - sets the format of the data to a queue (FIFO).
+ * @stack: double pointer to the top of the stack
+ * @line_number: line in the file we are
+ */
+void queue(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+	args->mode = 1;
+}

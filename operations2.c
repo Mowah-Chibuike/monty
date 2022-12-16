@@ -18,6 +18,23 @@ void push_stack(stack_t **stack, stack_t *new_node)
 }
 
 /**
+ * enqueue - pushes a new node to the end of a queue
+ * @stack: double pointer to the top of the stack
+ * @new_node: new node to be push on to the stack
+ */
+void enqueue(stack_t **stack, stack_t *new_node)
+{
+	        if (*stack == NULL)
+			args->tail = *stack = new_node;
+		else
+		{
+			args->tail->next = new_node;
+			new_node->prev = args->tail;
+			args->tail = new_node;
+		}
+}
+
+/**
  * mod - computes the rest of the division of the second top element of the
  * stack by the top element of the stack.
  * @stack: double pointer to the top of the stack

@@ -63,7 +63,7 @@ fptr get_func(char *op_code)
 		{"nop", nop}, {"sub", sub}, {"div", _div},
 		{"mul", _mul}, {"mod", mod}, {"pchar", pchar},
 		{"pstr", pstr}, {"rotl", rotl}, {"rotr", rotr},
-		{NULL, NULL}
+		{"stack", _stack}, {"queue", queue}, {NULL, NULL}
 	};
 
 	for (i = 0; array[i].opcode != NULL; i++)

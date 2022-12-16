@@ -27,6 +27,8 @@ void push(stack_t **stack, unsigned int line_number)
 	new_node->prev = NULL;
 	if (args->mode == 0)
 		push_stack(stack, new_node);
+	else
+		enqueue(stack, new_node);
 }
 
 /**
