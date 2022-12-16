@@ -1,6 +1,23 @@
 #include "monty.h"
 
 /**
+ * push_stack - pushes a new node on top of the stack
+ * @stack: double pointer to the top of the stack
+ * @new_node: new node to be push on to the stack
+ */
+void push_stack(stack_t **stack, stack_t *new_node)
+{
+	if (*stack == NULL)
+		args->tail = *stack = new_node;
+	else
+	{
+		(*stack)->prev = new_node;
+		new_node->next = *stack;
+		*stack = new_node;
+	}
+}
+
+/**
  * mod - computes the rest of the division of the second top element of the
  * stack by the top element of the stack.
  * @stack: double pointer to the top of the stack

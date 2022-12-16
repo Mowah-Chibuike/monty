@@ -62,7 +62,7 @@ fptr get_func(char *op_code)
 		{"pop", pop}, {"swap", swap}, {"add", add},
 		{"nop", nop}, {"sub", sub}, {"div", _div},
 		{"mul", _mul}, {"mod", mod}, {"pchar", pchar},
-		{"pstr", pstr},
+		{"pstr", pstr}, {"rotl", rotl},
 		{NULL, NULL}
 	};
 
@@ -70,6 +70,23 @@ fptr get_func(char *op_code)
 		if (strcmp(array[i].opcode, op_code) == 0)
 			return (array[i].f);
 	return (NULL);
+}
+
+/**
+ * init - initializes the args global variable
+ * @head: pointer to the head node of the command_t list
+ */
+void init(command_t *head)
+{
+	args = (arg_t *)malloc(sizeof(arg_t));
+	if (args == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free_coms_list(head);
+		exit(EXIT_FAILURE);
+	}
+	args->command = head;
+	args->mode = 0;
 }
 
 /**
@@ -97,14 +114,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	args = (arg_t *)malloc(sizeof(arg_t));
-	if (args == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free_coms_list(head);
-		exit(EXIT_FAILURE);
-	}
-	args->command = head;
+	init(head);
 	while (temp != NULL)
 	{
 		func = get_func(temp->opcode);

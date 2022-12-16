@@ -25,6 +25,7 @@ void free_args(void);
 void free_all(stack_t *stack);
 
 void push(stack_t **stack, unsigned int line_number);
+void push_stack(stack_t **stack, stack_t *new_node);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
@@ -37,6 +38,7 @@ void _mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
 
 char **parse_line(char *line);
 

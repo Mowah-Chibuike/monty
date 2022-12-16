@@ -50,13 +50,18 @@ typedef struct command_s
 /**
  * struct arguments - holds everything that should be passed down to other
  * functions
+ * @mode: this determines the behaviour of the stack_T data structure, the
+ * mode is 0 if it is a stack or 1 if it is a queue
  * @op_arg: holds the argument for a particular opcode
  * @command: command_t linked list holding all the commands from a file
+ * @tail: last node of the stack or queue
  */
 typedef struct arguments
 {
+	int mode;
 	char *op_arg;
 	command_t *command;
+	stack_t *tail;
 } arg_t;
 
 #endif /* STRUCTS_H */
