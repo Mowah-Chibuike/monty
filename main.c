@@ -61,7 +61,7 @@ fptr get_func(char *op_code)
 		{"push", push}, {"pall", pall}, {"pint", pint},
 		{"pop", pop}, {"swap", swap}, {"add", add},
 		{"nop", nop}, {"sub", sub}, {"div", _div},
-		{"mul", _mul}, {"mod", mod},
+		{"mul", _mul}, {"mod", mod}, {"pchar", pchar},
 		{NULL, NULL}
 	};
 

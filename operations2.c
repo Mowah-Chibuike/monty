@@ -29,3 +29,28 @@ void mod(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 	(*stack)->n %= top;
 }
+
+/**
+ * pchar - prints the char at the top of the stack, followed by a new line.
+ * @stack: double pointer to the top of the stack
+ * @line_number: line in the file we are
+ */
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	int top;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		free_all(*stack);
+		exit(EXIT_FAILURE);
+	}
+	top = (*stack)->n;
+	if (top < 0 || top > 127)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		free_all(*stack);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", top);
+}
