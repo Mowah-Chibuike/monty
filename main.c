@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	temp = head = read_file(argv[1]);
-	if (head == NULL)
+	if (head == NULL && errno != 0)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
