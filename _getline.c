@@ -27,6 +27,11 @@ int check_for_newline(char *str, ssize_t *num_chars, char **lineptr)
 	for (i = 1; i < 64; i++)
 	{
 		*lineptr = _realloc(*lineptr, i, str[i - 1]);
+		if (*lineptr == NULL)
+		{
+			fprintf(stderr, "Error: malloc failed\n");
+			exit(EXIT_FAILURE);
+		}
 		*num_chars += 1;
 		if (str[i - 1] == '\n')
 		{
